@@ -2,6 +2,12 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gb.ru.messenger.applications", "gb.ru.messenger.applications\gb.ru.messenger.applications.csproj", "{9D66A8DD-87EF-4278-9CBE-7529B8D884A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService", "UserService\UserService.csproj", "{C07D0DB4-F06D-4A90-8575-6DCA01599879}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageService", "MessageService\MessageService.csproj", "{76E83C42-2ED1-47F2-A150-5991ABADD480}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBase", "DataBase\DataBase.csproj", "{3587FD75-9396-4C68-A6D2-89226162B40B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +18,17 @@ Global
 		{9D66A8DD-87EF-4278-9CBE-7529B8D884A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D66A8DD-87EF-4278-9CBE-7529B8D884A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D66A8DD-87EF-4278-9CBE-7529B8D884A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C07D0DB4-F06D-4A90-8575-6DCA01599879}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C07D0DB4-F06D-4A90-8575-6DCA01599879}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C07D0DB4-F06D-4A90-8575-6DCA01599879}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C07D0DB4-F06D-4A90-8575-6DCA01599879}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76E83C42-2ED1-47F2-A150-5991ABADD480}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76E83C42-2ED1-47F2-A150-5991ABADD480}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76E83C42-2ED1-47F2-A150-5991ABADD480}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76E83C42-2ED1-47F2-A150-5991ABADD480}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3587FD75-9396-4C68-A6D2-89226162B40B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3587FD75-9396-4C68-A6D2-89226162B40B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3587FD75-9396-4C68-A6D2-89226162B40B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3587FD75-9396-4C68-A6D2-89226162B40B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
