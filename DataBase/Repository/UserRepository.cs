@@ -54,4 +54,30 @@ public class UserRepository: IUserRepository {
             }
         }
     }
+
+    public List<User> GetAllUsers() {
+        using var context = new UserContext();
+        return context.Users.ToList();
+    }
+
+    public void DeleteUser(string name) {
+        using (var context = new UserContext()) {
+            var user = context.Users.FirstOrDefault(x => x.Name == name);
+
+            if (user == null) {
+                throw new Exception("User not found");
+            }
+
+            if (user.Name == "admin") {
+                throw new Exception("Admin cant del himself");
+            }
+
+            try {
+                context.Users.Remove(user);
+            }
+            catch (Exception e) {
+                throw new Exception(e.Message);
+            }
+        }
+    }
 }

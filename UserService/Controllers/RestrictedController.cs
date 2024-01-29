@@ -1,4 +1,6 @@
 ﻿using System.Security.Claims;
+using DataBase;
+using DataBase.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UserService.AuthorizationModel;
@@ -8,7 +10,6 @@ namespace UserService.Controllers;
 [ApiController]
 [Route("[controller]")]
 public class RestrictedController: ControllerBase {
-    
     [HttpGet]
     [Route("Admins")]
     [Authorize(Roles = "Adminstrator")]
@@ -24,12 +25,21 @@ public class RestrictedController: ControllerBase {
         var currentUser = GetCurrentUser();
         return Ok($"Hi you are an {currentUser.Role}");
     }
+
     [HttpGet]
-    [Route("Admins")]
+    [Route("AllUsers")]
     [Authorize(Roles = "Adminstrator")]
     public IActionResult GetAllUsers() {
-        var currentUser = GetCurrentUser();
-        return Ok($"Hi you are an {currentUser.Role}");
+        var allUsers = new UserRepository().GetAllUsers();
+        return Ok(allUsers);
+    }
+
+    [HttpDelete]
+    [Route("DeleteUser")]
+    [Authorize(Roles = "Adminstrator")]
+    public IActionResult DeleteUser(string name) {
+        new UserRepository().DeleteUser(name);
+        return Ok();
     }
 
     private UserModel GetCurrentUser() {
