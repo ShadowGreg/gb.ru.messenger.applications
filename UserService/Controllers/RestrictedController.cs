@@ -8,6 +8,7 @@ namespace UserService.Controllers;
 [ApiController]
 [Route("[controller]")]
 public class RestrictedController: ControllerBase {
+    
     [HttpGet]
     [Route("Admins")]
     [Authorize(Roles = "Adminstrator")]
@@ -23,7 +24,13 @@ public class RestrictedController: ControllerBase {
         var currentUser = GetCurrentUser();
         return Ok($"Hi you are an {currentUser.Role}");
     }
-
+    [HttpGet]
+    [Route("Admins")]
+    [Authorize(Roles = "Adminstrator")]
+    public IActionResult GetAllUsers() {
+        var currentUser = GetCurrentUser();
+        return Ok($"Hi you are an {currentUser.Role}");
+    }
 
     private UserModel GetCurrentUser() {
         var identity = HttpContext.User.Identity as ClaimsIdentity;
