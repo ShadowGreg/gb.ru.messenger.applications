@@ -109,4 +109,17 @@ public class LoginController: ControllerBase {
 
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
+
+    [HttpGet]
+    [Route("GetUserId")]
+    [Authorize]
+    public ActionResult GetUserId() {
+        var identity = HttpContext.User.Identity as ClaimsIdentity;
+        if (identity != null) {
+            var userClaims = identity.Claims;
+            return Ok(userClaims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value);
+        }
+
+        return Unauthorized();
+    }
 }
