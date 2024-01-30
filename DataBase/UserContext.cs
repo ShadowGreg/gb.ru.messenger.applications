@@ -12,8 +12,6 @@ public class UserContext: DbContext {
         => optionsBuilder
             .LogTo(Console.WriteLine)
             .UseNpgsql("Host=127.0.0.1;Port=5433;Database=UserLoginDb;Username=postgres;Password=example;");
-    //"server=localhost,5432;Database=GraphService;user id=postgres;password='example';"
-
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         modelBuilder.Entity<User>(entity =>

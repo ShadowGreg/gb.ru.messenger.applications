@@ -11,7 +11,7 @@ public class UserRepository: IUserRepository {
                 var c = context.Users.Count(x => x.RoleId == RoleId.Admin);
 
                 if (c > 0) {
-                    throw new Exception("Администратор может быть только один");
+                    throw new Exception("There can only be one administrator");
                 }
             }
 
