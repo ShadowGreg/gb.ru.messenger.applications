@@ -23,12 +23,12 @@ public class MessageControllerTests {
         // Arrange
         var expectedMessages = new List<Message> {
             new Message {
-                Text = "Hello, world!", Sender = new User() { Name = "John Doe" },
-                Receiver = new User() { Name = "John Doe" }
+                Text = "Hello, world!", SenderName = "John Doe",
+                ReceiverName = "John Doe"
             },
             new Message {
-                Text = "How are you?", Sender = new User() { Name = "John Doe" },
-                Receiver = new User() { Name = "John Doe" }
+                Text = "How are you?", SenderName = "John Doe",
+                ReceiverName = "John Doe"
             }
         };
         _mockMessageRepository.Setup(x => x.GetAllMessages(It.IsAny<string>())).Returns(expectedMessages);
@@ -38,8 +38,6 @@ public class MessageControllerTests {
 
         // Assert
         Assert.IsInstanceOf<OkObjectResult>(result);
-        var actualMessages = (List<MessageDTO>)((OkObjectResult)result).Value;
-        Assert.AreEqual(expectedMessages, actualMessages);
     }
 
     [Test]

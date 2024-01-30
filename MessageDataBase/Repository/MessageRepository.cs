@@ -9,8 +9,8 @@ public class MessageRepository: IMessageRepository {
                 var id = Guid.NewGuid();
                 var message = new Message() {
                     Id = id,
-                    Sender = new User() { Name = senderName },
-                    Receiver = new User() { Name = receiverName },
+                    SenderName = senderName ,
+                    ReceiverName = receiverName ,
                     Text = text,
                     IsReceived = false
                 };
@@ -26,7 +26,7 @@ public class MessageRepository: IMessageRepository {
     public List<Message> GetAllMessages(string receiverName) {
         using (var context = new MessagesContext()) {
             var messages = context.Messages
-                .Where(message => message.Receiver.Name == receiverName && message.IsReceived == false)
+                .Where(message => message.ReceiverName == receiverName && message.IsReceived == false)
                 .ToList();
             foreach (var message in messages) {
                 message.IsReceived = true;

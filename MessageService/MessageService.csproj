@@ -27,4 +27,8 @@
       <ProjectReference Include="..\MessageDataBase\MessageDataBase.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="PostmanTests\" />
+    </ItemGroup>
+
 </Project>
