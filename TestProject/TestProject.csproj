@@ -24,4 +24,8 @@
       <ProjectReference Include="..\UserService\UserService.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="PostmenQuery\" />
+    </ItemGroup>
+
 </Project>

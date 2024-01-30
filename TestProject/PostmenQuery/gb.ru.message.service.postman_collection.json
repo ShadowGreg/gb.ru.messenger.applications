@@ -1,0 +1,284 @@
+{
+	"info": {
+		"_postman_id": "b972f3c7-74fc-4e32-92e3-7a6c86ea8d71",
+		"name": "gb.ru.message.service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24233852"
+	},
+	"item": [
+		{
+			"name": "Post Message",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"text\": \"Hi user\",\r\n  \"senderName\": \"user2\",\r\n  \"receiverName\": \"user\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5127/Message/SendMessage",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5127",
+					"path": [
+						"Message",
+						"SendMessage"
+					],
+					"query": [
+						{
+							"key": "-H",
+							"value": "accept: */*",
+							"disabled": true
+						},
+						{
+							"key": "-H",
+							"value": "Content-Type: application/json",
+							"disabled": true
+						},
+						{
+							"key": "-d",
+							"value": "{\n  \"text\": \"Hi user\",\n  \"senderName\": \"user2\",\n  \"receiverName\": \"user\"\n}",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Messages for user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5127/Message/GetMessages?userName=user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5127",
+					"path": [
+						"Message",
+						"GetMessages"
+					],
+					"query": [
+						{
+							"key": "userName",
+							"value": "user"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add new Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"admin1\",\r\n  \"password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5279/Login/AddAdmin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5279",
+					"path": [
+						"Login",
+						"AddAdmin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AdminLogin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"admin\",\r\n  \"password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5279/Login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5279",
+					"path": [
+						"Login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddUser",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "GetUserId",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNyc2Etc2hhMjU2IiwidHlwIjoiSldUIn0.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW5zdHJhdG9yIiwiZXhwIjoxNzA2NjE5NzMzLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MTIzLyIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NzEyMy8ifQ.rhxYJKAVie-slEmva_Q93wQXJgB7TePxFUkDFXRxmLGTxg-vP2nWeksQOH1PqNPGqckL8RKpo9VahJIn71E8YAYwCxoyfrPPVKPWd1g3NsaiBeQWEIVhMqzzaxP_O5pJX5wpEC5J2GncKYOsxOIbI6066_DLISrL1XHBsVnESY-3jS9ObTKTGxqoaDzJvh9abLiEl_AQ9IGhxG0JBvq_aYepUSrPPQOwUwMQ1Qxf1R_myH7gFE82e5sjSK8mEkqBO-kegUDDkdSZw9FbXlQCLLQ_7l5xienXNZxX34irJ6ZgDhy8fTP5a9Cqt5pakNCqntgMCyd0Mk7CskzbAJNWwA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5279/Login/GetUserId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5279",
+					"path": [
+						"Login",
+						"GetUserId"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetRole",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNyc2Etc2hhMjU2IiwidHlwIjoiSldUIn0.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW5zdHJhdG9yIiwiZXhwIjoxNzA2NjE5NzMzLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MTIzLyIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NzEyMy8ifQ.rhxYJKAVie-slEmva_Q93wQXJgB7TePxFUkDFXRxmLGTxg-vP2nWeksQOH1PqNPGqckL8RKpo9VahJIn71E8YAYwCxoyfrPPVKPWd1g3NsaiBeQWEIVhMqzzaxP_O5pJX5wpEC5J2GncKYOsxOIbI6066_DLISrL1XHBsVnESY-3jS9ObTKTGxqoaDzJvh9abLiEl_AQ9IGhxG0JBvq_aYepUSrPPQOwUwMQ1Qxf1R_myH7gFE82e5sjSK8mEkqBO-kegUDDkdSZw9FbXlQCLLQ_7l5xienXNZxX34irJ6ZgDhy8fTP5a9Cqt5pakNCqntgMCyd0Mk7CskzbAJNWwA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5279/Login/GetUserId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5279",
+					"path": [
+						"Login",
+						"GetUserId"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllUsers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNyc2Etc2hhMjU2IiwidHlwIjoiSldUIn0.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW5zdHJhdG9yIiwiZXhwIjoxNzA2NjE5NzMzLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MTIzLyIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NzEyMy8ifQ.rhxYJKAVie-slEmva_Q93wQXJgB7TePxFUkDFXRxmLGTxg-vP2nWeksQOH1PqNPGqckL8RKpo9VahJIn71E8YAYwCxoyfrPPVKPWd1g3NsaiBeQWEIVhMqzzaxP_O5pJX5wpEC5J2GncKYOsxOIbI6066_DLISrL1XHBsVnESY-3jS9ObTKTGxqoaDzJvh9abLiEl_AQ9IGhxG0JBvq_aYepUSrPPQOwUwMQ1Qxf1R_myH7gFE82e5sjSK8mEkqBO-kegUDDkdSZw9FbXlQCLLQ_7l5xienXNZxX34irJ6ZgDhy8fTP5a9Cqt5pakNCqntgMCyd0Mk7CskzbAJNWwA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5279/Login/GetUserId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5279",
+					"path": [
+						"Login",
+						"GetUserId"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteUser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNyc2Etc2hhMjU2IiwidHlwIjoiSldUIn0.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW5zdHJhdG9yIiwiZXhwIjoxNzA2NjE5NzMzLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MTIzLyIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NzEyMy8ifQ.rhxYJKAVie-slEmva_Q93wQXJgB7TePxFUkDFXRxmLGTxg-vP2nWeksQOH1PqNPGqckL8RKpo9VahJIn71E8YAYwCxoyfrPPVKPWd1g3NsaiBeQWEIVhMqzzaxP_O5pJX5wpEC5J2GncKYOsxOIbI6066_DLISrL1XHBsVnESY-3jS9ObTKTGxqoaDzJvh9abLiEl_AQ9IGhxG0JBvq_aYepUSrPPQOwUwMQ1Qxf1R_myH7gFE82e5sjSK8mEkqBO-kegUDDkdSZw9FbXlQCLLQ_7l5xienXNZxX34irJ6ZgDhy8fTP5a9Cqt5pakNCqntgMCyd0Mk7CskzbAJNWwA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5279/Restricted/DeleteUser?name=user1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5279",
+					"path": [
+						"Restricted",
+						"DeleteUser"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "user1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
