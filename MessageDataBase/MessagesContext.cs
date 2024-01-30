@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MessageDataBase;
 
-public class UserContext: DbContext {
+public class MessagesContext: DbContext {
     public virtual DbSet<User> Users { get; set; }
 
-    public virtual DbSet<Role> Roles { get; set; }
+    public virtual DbSet<Message> Messages { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder
