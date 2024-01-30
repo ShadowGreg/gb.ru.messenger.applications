@@ -11,13 +11,11 @@ public class MessageRepository: IMessageRepository {
             var sender = context.Users.FirstOrDefault(user => user.Name == senderName);
             var receiver = context.Users.FirstOrDefault(user => user.Name == receiverName);
             if (sender != null & receiver != null) {
-                var id = new Guid();
+                var id = Guid.NewGuid();
                 var message = new Message() {
                     Id = id,
                     Sender = sender,
-                    SenderId = sender.Id,
                     Receiver = receiver,
-                    ReceiverId = receiver.Id,
                     Text = text,
                     IsReceived = false
                 };

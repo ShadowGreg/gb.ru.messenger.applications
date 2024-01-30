@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 namespace MessageDataBase;
 
 public class MessagesContext: DbContext {
-    public virtual DbSet<User> Users { get; set; }
 
     public virtual DbSet<Message> Messages { get; set; }
 
@@ -20,31 +19,11 @@ public class MessagesContext: DbContext {
 
             entity.ToTable("messages");
 
-            entity.HasOne(e => e.Sender)
-                .WithMany()
-                .HasForeignKey(e => e.SenderId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            entity.HasOne(e => e.Receiver)
-                .WithMany()
-                .HasForeignKey(e => e.ReceiverId)
-                .OnDelete(DeleteBehavior.Restrict);
-
             entity.Property(e => e.Text)
                 .IsRequired()
                 .HasMaxLength(255);
-
             entity.Property(e => e.IsReceived)
                 .IsRequired();
-        });
-
-        modelBuilder.Entity<User>(entity =>
-        {
-            entity.ToTable("users");
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Name).HasColumnName("name");
-
-            
         });
     }
 }

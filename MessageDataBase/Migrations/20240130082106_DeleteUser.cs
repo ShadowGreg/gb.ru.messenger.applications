@@ -5,24 +5,18 @@
 namespace MessageDataBase.Migrations
 {
     /// <inheritdoc />
-    public partial class AddUserIdinContext : Migration
+    public partial class DeleteUser : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "Id",
-                table: "users",
-                newName: "id");
+
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "id",
-                table: "users",
-                newName: "Id");
+
         }
     }
 }

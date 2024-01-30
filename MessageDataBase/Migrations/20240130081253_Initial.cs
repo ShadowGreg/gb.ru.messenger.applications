@@ -7,43 +7,22 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MessageDataBase.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Role",
+                name: "users",
                 columns: table => new
                 {
-                    RoleId = table.Column<int>(type: "integer", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Role", x => x.RoleId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    Password = table.Column<byte[]>(type: "bytea", nullable: false),
-                    Salt = table.Column<byte[]>(type: "bytea", nullable: false),
-                    RoleId = table.Column<int>(type: "integer", nullable: false)
+                    name = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Users_Role_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "Role",
-                        principalColumn: "RoleId",
-                        onDelete: ReferentialAction.Cascade);
+                    table.PrimaryKey("PK_users", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -60,17 +39,17 @@ namespace MessageDataBase.Migrations
                 {
                     table.PrimaryKey("message_pkey", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_messages_Users_ReceiverId",
+                        name: "FK_messages_users_ReceiverId",
                         column: x => x.ReceiverId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalTable: "users",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_messages_Users_SenderId",
+                        name: "FK_messages_users_SenderId",
                         column: x => x.SenderId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalTable: "users",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -82,11 +61,6 @@ namespace MessageDataBase.Migrations
                 name: "IX_messages_SenderId",
                 table: "messages",
                 column: "SenderId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Users_RoleId",
-                table: "Users",
-                column: "RoleId");
         }
 
         /// <inheritdoc />
@@ -96,10 +70,7 @@ namespace MessageDataBase.Migrations
                 name: "messages");
 
             migrationBuilder.DropTable(
-                name: "Users");
-
-            migrationBuilder.DropTable(
-                name: "Role");
+                name: "users");
         }
     }
 }
