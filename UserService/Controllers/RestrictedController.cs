@@ -17,7 +17,7 @@ public class RestrictedController: ControllerBase {
     }
 
     [HttpGet]
-    [Route("Admins")]
+    [Route("AdminEndPoint")]
     [Authorize(Roles = "Adminstrator")]
     public IActionResult AdminEndPoint() {
         var currentUser = GetCurrentUser();
@@ -25,7 +25,7 @@ public class RestrictedController: ControllerBase {
     }
 
     [HttpGet]
-    [Route("Users")]
+    [Route("UserEndPoint")]
     [Authorize(Roles = "Adminstrator, User")]
     public IActionResult UserEndPoint() {
         var currentUser = GetCurrentUser();
@@ -34,7 +34,6 @@ public class RestrictedController: ControllerBase {
 
     [HttpGet]
     [Route("AllUsers")]
-    [Authorize(Roles = "Adminstrator")]
     public IActionResult GetAllUsers() {
         var allUsers = new UserRepository().GetAllUsers();
         return Ok(allUsers);
@@ -44,7 +43,7 @@ public class RestrictedController: ControllerBase {
     [Route("DeleteUser")]
     [Authorize(Roles = "Adminstrator")]
     public IActionResult DeleteUser(string name) {
-        new UserRepository().DeleteUser(name);
+        _userRepository.DeleteUser(name);
         return Ok();
     }
 

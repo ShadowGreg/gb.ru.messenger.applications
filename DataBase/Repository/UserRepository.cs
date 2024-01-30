@@ -74,6 +74,7 @@ public class UserRepository: IUserRepository {
 
             try {
                 context.Users.Remove(user);
+                context.SaveChanges();
             }
             catch (Exception e) {
                 throw new Exception(e.Message);
