@@ -7,22 +7,22 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MessageDataBase.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "users",
+                name: "User",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    name = table.Column<string>(type: "text", nullable: false)
+                    Name = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_users", x => x.id);
+                    table.PrimaryKey("PK_User", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -39,16 +39,16 @@ namespace MessageDataBase.Migrations
                 {
                     table.PrimaryKey("message_pkey", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_messages_users_ReceiverId",
+                        name: "FK_messages_User_ReceiverId",
                         column: x => x.ReceiverId,
-                        principalTable: "users",
-                        principalColumn: "id",
+                        principalTable: "User",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_messages_users_SenderId",
+                        name: "FK_messages_User_SenderId",
                         column: x => x.SenderId,
-                        principalTable: "users",
-                        principalColumn: "id",
+                        principalTable: "User",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -70,7 +70,7 @@ namespace MessageDataBase.Migrations
                 name: "messages");
 
             migrationBuilder.DropTable(
-                name: "users");
+                name: "User");
         }
     }
 }

@@ -66,7 +66,7 @@ namespace MessageDataBase.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("MessageDataBase.BD.Message", b =>

@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MessageDataBase.Migrations
 {
     [DbContext(typeof(MessagesContext))]
-    [Migration("20240130081937_DeleteUserFields")]
-    partial class DeleteUserFields
+    [Migration("20240130091957_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -69,7 +69,7 @@ namespace MessageDataBase.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("MessageDataBase.BD.Message", b =>

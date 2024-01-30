@@ -10,7 +10,7 @@ public class MessagesContext: DbContext {
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder
             .LogTo(Console.WriteLine)
-            .UseNpgsql("Host=127.0.0.1;Port=5433;Database=UserLoginDb;Username=postgres;Password=example;");
+            .UseNpgsql("Host=127.0.0.1;Port=5433;Database=MessageDb;Username=postgres;Password=example;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         modelBuilder.Entity<Message>(entity =>

@@ -23,4 +23,8 @@
       <ProjectReference Include="..\MessageDataBase\MessageDataBase.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\MessageDataBase\MessageDataBase.csproj" />
+    </ItemGroup>
+
 </Project>
