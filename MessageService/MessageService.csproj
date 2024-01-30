@@ -20,15 +20,12 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\DataBase\DataBase.csproj" />
       <ProjectReference Include="..\MessageDataBase\MessageDataBase.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\MessageDataBase\MessageDataBase.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="PostmanTests\" />
     </ItemGroup>
 
 </Project>
