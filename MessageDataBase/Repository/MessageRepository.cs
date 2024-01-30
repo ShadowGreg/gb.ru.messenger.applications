@@ -1,6 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 using MessageDataBase.BD;
+using Microsoft.EntityFrameworkCore;
 
 namespace MessageDataBase.Repository;
 
@@ -30,6 +31,16 @@ public class MessageRepository: IMessageRepository {
     }
 
     public List<Message> GetAllMessages(string receiverName) {
-        throw new NotImplementedException();
+        using (var context = new MessagesContext()) {
+            var messages = context.Messages
+                .Where(message => message.Receiver.Name == receiverName && message.IsReceived == false)
+                .ToList();
+            foreach (var message in messages) {
+                message.IsReceived = true;
+                context.SaveChanges();
+            }
+
+            return messages;
+        }
     }
 }

@@ -25,7 +25,6 @@ public static class RSATools {
 public class LoginController: ControllerBase {
     private readonly IConfiguration _config;
 
-    //private readonly IUserAuthenticationService _authenticationService;
     private readonly IUserRepository _userRepository;
 
     public LoginController(IConfiguration config,

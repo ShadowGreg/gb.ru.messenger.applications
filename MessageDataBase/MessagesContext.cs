@@ -14,36 +14,35 @@ public class MessagesContext: DbContext {
             .UseNpgsql("Host=127.0.0.1;Port=5433;Database=UserLoginDb;Username=postgres;Password=example;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
-        modelBuilder.Entity<User>(entity =>
+        modelBuilder.Entity<Message>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("users_pkey");
-            entity.HasIndex(e => e.Name).IsUnique();
+            entity.HasKey(e => e.Id).HasName("message_pkey");
 
-            entity.ToTable("users");
+            entity.ToTable("messages");
 
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Name)
-                .HasMaxLength(255)
-                .HasColumnName("name");
+            entity.HasOne(e => e.Sender)
+                .WithMany()
+                .HasForeignKey(e => e.SenderId)
+                .OnDelete(DeleteBehavior.Restrict);
 
-            entity.Property(e => e.Password).HasColumnName("password");
-            entity.Property(e => e.Salt).HasColumnName("salt");
+            entity.HasOne(e => e.Receiver)
+                .WithMany()
+                .HasForeignKey(e => e.ReceiverId)
+                .OnDelete(DeleteBehavior.Restrict);
 
-            entity.Property(e => e.RoleId).HasConversion<int>();
+            entity.Property(e => e.Text)
+                .IsRequired()
+                .HasMaxLength(255);
+
+            entity.Property(e => e.IsReceived)
+                .IsRequired();
         });
 
-        modelBuilder
-            .Entity<Role>()
-            .Property(e => e.RoleId)
-            .HasConversion<int>();
-
-        modelBuilder
-            .Entity<Role>().HasData(
-                Enum.GetValues(typeof(RoleId))
-                    .Cast<RoleId>()
-                    .Select(e => new Role() {
-                        RoleId = e,
-                        Name = e.ToString()
-                    }));
+        modelBuilder.Entity<User>(entity =>
+        {
+            entity.ToTable("users");
+            entity.Property(e => e.Id).HasColumnName("id");
+            
+        });
     }
 }
