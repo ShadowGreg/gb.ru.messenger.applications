@@ -4,10 +4,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
-public class Program
-{
-    static RSA GetPublicKey()
-    {
+public class Program {
+    private static RSA GetPublicKey() {
         var f = File.ReadAllText("rsa/public_key.pem");
 
         var rsa = RSA.Create();
@@ -15,8 +13,7 @@ public class Program
         return rsa;
     }
 
-    public static void Main(string[] args)
-    {
+    public static void Main(string[] args) {
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
@@ -26,42 +23,39 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
 
         builder.Services.AddSwaggerGen(opt =>
-        {
-            opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
             {
-                In = ParameterLocation.Header,
-                Description = "Please enter token",
-                Name = "Authorization",
-                Type = SecuritySchemeType.Http,
-                BearerFormat = "Token",
-                
-                Scheme = "bearer"
-            });
-            opt.AddSecurityRequirement(new OpenApiSecurityRequirement
-            {
-                {
-                    new OpenApiSecurityScheme
+                opt.AddSecurityDefinition("Bearer",
+                    new OpenApiSecurityScheme {
+                        In = ParameterLocation.Header,
+                        Description = "Please enter token",
+                        Name = "Authorization",
+                        Type = SecuritySchemeType.Http,
+                        BearerFormat = "Token",
+
+                        Scheme = "bearer"
+                    });
+                opt.AddSecurityRequirement(new OpenApiSecurityRequirement {
                     {
-                        Reference = new OpenApiReference
-                        {
-                            Type=ReferenceType.SecurityScheme,
-                            Id="Bearer"
-                        }
-                    },
-                    new string[]{}
-                }
-            });
-        }
+                        new OpenApiSecurityScheme {
+                            Reference = new OpenApiReference {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        new string[] { }
+                    }
+                });
+            }
         );
 
 
-       // builder.Services.AddScoped<IUserAuthenticationService,AuthenticationMock>();
+        // builder.Services.AddScoped<IUserAuthenticationService,AuthenticationMock>();
         builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 
-        builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
-            options.TokenValidationParameters = new TokenValidationParameters
-            {
+        builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters {
                 ValidateIssuer = true,
                 ValidateAudience = true,
                 ValidateLifetime = true,
@@ -71,7 +65,6 @@ public class Program
                 // IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
 
                 IssuerSigningKey = new RsaSecurityKey(GetPublicKey())
-
             };
         });
 
@@ -79,8 +72,7 @@ public class Program
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
-        if (app.Environment.IsDevelopment())
-        {
+        if (app.Environment.IsDevelopment()) {
             app.UseSwagger();
             app.UseSwaggerUI();
         }

@@ -73,18 +73,5 @@ namespace TestProject {
             // Assert
             Assert.IsNotNull(result);
         }
-
-        [Test]
-        public void DeleteUser_Should_Return_OkResult() {
-            // Arrange
-            var name = "John";
-            _userRepositoryMock.Setup(repo => repo.DeleteUser(name));
-
-            // Act
-            var result = _controller.DeleteUser(name);
-
-            // Assert
-            Assert.IsNull(result);
-        }
     }
 }

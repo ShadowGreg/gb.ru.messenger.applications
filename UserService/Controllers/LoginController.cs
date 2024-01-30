@@ -11,8 +11,8 @@ using UserService.AuthorizationModel;
 namespace UserService.Controllers;
 
 public static class RSATools {
-    public static RSA GetPrivateKey() {
-        var f = File.ReadAllText("rsa/private_key.pem");
+    public static RSA GetPrivateKey(string path = "rsa/private_key.pem") {
+        var f = File.ReadAllText(path);
 
         var rsa = RSA.Create();
         rsa.ImportFromPem(f);
