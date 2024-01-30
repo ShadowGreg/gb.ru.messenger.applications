@@ -10,6 +10,12 @@ namespace UserService.Controllers;
 [ApiController]
 [Route("[controller]")]
 public class RestrictedController: ControllerBase {
+    private readonly IUserRepository _userRepository;
+
+    public RestrictedController(IUserRepository userRepository) {
+        _userRepository = userRepository;
+    }
+
     [HttpGet]
     [Route("Admins")]
     [Authorize(Roles = "Adminstrator")]
