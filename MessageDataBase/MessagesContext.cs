@@ -42,6 +42,8 @@ public class MessagesContext: DbContext {
         {
             entity.ToTable("users");
             entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Name).HasColumnName("name");
+
             
         });
     }
