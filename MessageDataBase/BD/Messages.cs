@@ -1,4 +1,4 @@
-﻿namespace DataBase.BD;
+﻿namespace MessageDataBase.BD;
 
 public class Messages {
     public int Id { get; set; }
