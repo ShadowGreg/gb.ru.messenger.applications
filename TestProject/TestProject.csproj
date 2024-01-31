@@ -21,6 +21,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\MessageService\MessageService.csproj" />
+      <ProjectReference Include="..\UserDataBase\UserDataBase.csproj" />
       <ProjectReference Include="..\UserService\UserService.csproj" />
     </ItemGroup>
 
