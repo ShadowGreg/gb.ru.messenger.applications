@@ -1,7 +1,7 @@
-﻿using DataBase.BD;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using UserDataBase.BD;
 
-namespace DataBase;
+namespace UserDataBase;
 
 public class UserContext: DbContext {
     public virtual DbSet<User> Users { get; set; }

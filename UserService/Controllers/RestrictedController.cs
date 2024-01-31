@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
-using DataBase;
-using DataBase.Repository;
+using UserDataBase;
+using UserDataBase.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using UserService.AuthorizationModel;

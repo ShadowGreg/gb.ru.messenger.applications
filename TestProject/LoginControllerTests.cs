@@ -1,13 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Moq;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
 using System.Security.Claims;
-using DataBase.BD;
-using DataBase.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using UserDataBase.BD;
+using UserDataBase.Repository;
 using UserService.AuthorizationModel;
 using UserService.Controllers;
 

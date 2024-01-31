@@ -1,4 +1,4 @@
-﻿namespace DataBase.BD;
+﻿namespace UserDataBase.BD;
 
 public class Role {
     public RoleId RoleId { get; set; }

@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System.Security.Claims;
-using DataBase.BD;
 using UserService.Controllers;
 using UserService.AuthorizationModel;
-using DataBase.Repository;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
+using UserDataBase.BD;
+using UserDataBase.Repository;
 
 
 namespace TestProject {

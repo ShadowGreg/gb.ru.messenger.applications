@@ -6,7 +6,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService", "UserService\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageService", "MessageService\MessageService.csproj", "{76E83C42-2ED1-47F2-A150-5991ABADD480}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBase", "DataBase\DataBase.csproj", "{3587FD75-9396-4C68-A6D2-89226162B40B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserDataBase", "UserDataBase\UserDataBase.csproj", "{3587FD75-9396-4C68-A6D2-89226162B40B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{7473436B-BB21-49F9-9F7D-95DD2C716F35}"
 EndProject

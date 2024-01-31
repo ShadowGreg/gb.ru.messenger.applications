@@ -1,6 +1,6 @@
-﻿using DataBase.BD;
+﻿using UserDataBase.BD;
 
-namespace DataBase.Repository;
+namespace UserDataBase.Repository;
 
 public interface IUserRepository {
     public void UserAdd(string name, string password, RoleId roleId);

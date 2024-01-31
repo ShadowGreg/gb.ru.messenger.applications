@@ -20,7 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\DataBase\DataBase.csproj" />
+      <ProjectReference Include="..\UserDataBase\UserDataBase.csproj" />
       <ProjectReference Include="..\MessageDataBase\MessageDataBase.csproj" />
     </ItemGroup>
 

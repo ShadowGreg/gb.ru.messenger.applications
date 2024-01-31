@@ -1,8 +1,8 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
-using DataBase.BD;
+using UserDataBase.BD;
 
-namespace DataBase.Repository;
+namespace UserDataBase.Repository;
 
 public class UserRepository: IUserRepository {
     public void UserAdd(string name, string password, RoleId roleId) {

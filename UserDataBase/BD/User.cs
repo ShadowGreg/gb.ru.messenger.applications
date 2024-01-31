@@ -1,4 +1,4 @@
-﻿namespace DataBase.BD; 
+﻿namespace UserDataBase.BD; 
 
 public class User {
     public int Id { get; set; }
